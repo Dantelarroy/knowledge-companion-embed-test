@@ -67,6 +67,18 @@
     padding: .9rem 1rem; overflow-x: auto; font-size: .85rem; margin: 0 0 1rem;
   }
   pre code { background: none; padding: 0; }
+  .cta {
+    display: inline-block; text-decoration: none;
+    background: var(--accent); color: var(--card);
+    padding: .7rem 1.1rem; border-radius: .45rem;
+    font-weight: 600; font-size: .95rem;
+    border: 1px solid transparent;
+  }
+  .cta:hover, .cta:focus-visible { filter: brightness(1.1); }
+  .cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .cta { color: #14161a; }
+  }
   footer {
     margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line);
     font-size: .85rem; color: var(--muted);
@@ -89,10 +101,29 @@
     servicio y desaparece al terminar la prueba.
   </div>
 
+  <h2>Dos formas de verlo</h2>
+
   <p>
-    El recuadro que aparece abajo a la derecha es el mismo componente que se
-    instalaría en una web de cliente: una sola etiqueta <code>&lt;script&gt;</code>,
-    sin framework y sin tocar el resto de la página.
+    <strong>Incrustado.</strong> El recuadro que aparece abajo a la derecha es el
+    mismo componente que se instalaría en una web de cliente: una sola etiqueta
+    <code>&lt;script&gt;</code>, sin framework y sin tocar el resto de la página.
+  </p>
+
+  <p>
+    <strong>Completo.</strong> La misma herramienta con su propia pantalla, con
+    el catálogo de fuentes a la vista.
+  </p>
+
+  <p>
+    <a class="cta"
+       href="https://dantes-macbook-pro.tail09f5c9.ts.net/t/afi/hub"
+       target="_blank" rel="noopener noreferrer">Abrir Knowledge Hub completo ↗</a>
+  </p>
+
+  <p class="muted">
+    Mismo motor, mismo contenido y las mismas cuotas: cambia la superficie, no la
+    respuesta. Se abre en una pestaña nueva porque el Hub, a propósito, no se deja
+    incrustar en ninguna página — sólo el widget puede vivir dentro de otra web.
   </p>
 
   <h2>El snippet, tal cual</h2>
@@ -110,10 +141,11 @@
   <div class="card">
     <ol>
       <li>Abrir esta página <strong>sin Tailscale</strong>, con datos móviles.</li>
-      <li>Abrir el asistente y hacer una pregunta real sobre el contenido publicado por AFI.</li>
+      <li>Abrir el asistente <strong>incrustado</strong> y hacer una pregunta real sobre el contenido publicado por AFI.</li>
       <li>Comprobar que la respuesta llega con <strong>citas</strong> y que se puede abrir la fuente.</li>
       <li>Navegar la evidencia mientras la respuesta se escribe, y comprobar que no se pierde el hilo.</li>
       <li>Cerrar y reabrir: la conversación debe seguir ahí.</li>
+      <li>Abrir el <strong>Hub completo</strong> desde el botón de arriba y repetir una pregunta ahí.</li>
       <li>Comprobar que esta página funciona con normalidad aunque el asistente falle.</li>
     </ol>
   </div>
