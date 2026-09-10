@@ -44,6 +44,13 @@
   }
   h1 { font-size: 1.6rem; line-height: 1.25; margin: 0; text-wrap: balance; }
   h2 { font-size: 1.05rem; margin: 2rem 0 .6rem; }
+  h3 { font-size: .95rem; margin: 1.5rem 0 .5rem; color: var(--accent); }
+  /* The space the inline Hub is given. A border and a radius on purpose: what
+     the client styles here still applies, drawn inside the width they gave. */
+  #knowledge {
+    border: 1px solid var(--line); border-radius: .5rem; overflow: hidden;
+    margin: 0 0 1.25rem; background: var(--card);
+  }
   p { margin: 0 0 1rem; }
   .muted { color: var(--muted); }
   .notice {
@@ -101,40 +108,58 @@
     servicio y desaparece al terminar la prueba.
   </div>
 
-  <h2>Dos formas de verlo</h2>
+  <h2>Dos formas de integrarlo</h2>
 
   <p>
-    <strong>Incrustado.</strong> El recuadro que aparece abajo a la derecha es el
-    mismo componente que se instalaría en una web de cliente: una sola etiqueta
-    <code>&lt;script&gt;</code>, sin framework y sin tocar el resto de la página.
+    Las dos salen del mismo servicio, con el mismo contenido y las mismas cuotas.
+    Cambia dónde vive el componente, no lo que responde.
   </p>
 
+  <h3>1 · Flotante</h3>
   <p>
-    <strong>Completo.</strong> La misma herramienta con su propia pantalla, con
-    el catálogo de fuentes a la vista.
+    El recuadro de abajo a la derecha. Una sola etiqueta
+    <code>&lt;script&gt;</code>, sin framework, sin tocar el resto de la página.
   </p>
-
-  <p>
-    <a class="cta"
-       href="https://dantes-macbook-pro.tail09f5c9.ts.net/t/afi/hub"
-       target="_blank" rel="noopener noreferrer">Abrir Knowledge Hub completo ↗</a>
-  </p>
-
-  <p class="muted">
-    Mismo motor, mismo contenido y las mismas cuotas: cambia la superficie, no la
-    respuesta. Se abre en una pestaña nueva porque el Hub, a propósito, no se deja
-    incrustar en ninguna página — sólo el widget puede vivir dentro de otra web.
-  </p>
-
-  <h2>El snippet, tal cual</h2>
   <pre><code>&lt;script async
   src="https://dantes-macbook-pro.tail09f5c9.ts.net/v1/loader.js"
   data-kc-tenant="afi"&gt;&lt;/script&gt;</code></pre>
+
+  <h3>2 · Dentro de una sección de la página</h3>
+  <p>
+    La herramienta completa —preguntas, respuestas, fuentes y visor de
+    evidencia— ocupando el hueco que el cliente decida. El mismo snippet, con dos
+    atributos más: <strong>dónde</strong> aparece y <strong>qué altura</strong>
+    tiene.
+  </p>
+  <pre><code>&lt;div id="knowledge"&gt;&lt;/div&gt;
+
+&lt;script async
+  src="https://dantes-macbook-pro.tail09f5c9.ts.net/v1/loader.js"
+  data-kc-tenant="afi"
+  data-kc-mode="inline"
+  data-kc-target="#knowledge"
+  data-kc-height="78vh"&gt;&lt;/script&gt;</code></pre>
 
   <p class="muted">
     En la instalación definitiva sólo cambia el dominio del <code>src</code>.
     El atributo <code>data-kc-tenant</code> es una clave de enrutado visible en
     el HTML: <strong>no es una credencial</strong> y conocerla no autoriza nada.
+  </p>
+
+  <h2 id="section-heading">Preguntá a lo publicado por AFI</h2>
+  <p class="muted">
+    Esto de aquí abajo es esa segunda forma, funcionando. Se desplaza por dentro;
+    la página sigue siendo tuya.
+  </p>
+  <div id="knowledge"></div>
+
+  <p class="muted">
+    Y la misma herramienta con su propia pantalla completa, si querés verla sin
+    nada alrededor:
+    <a href="https://dantes-macbook-pro.tail09f5c9.ts.net/t/afi/hub"
+       target="_blank" rel="noopener noreferrer">abrir el Knowledge Hub ↗</a>.
+    Esa se abre en pestaña nueva porque, a propósito, no se deja incrustar en
+    ninguna página: para incrustarla existe la ruta de arriba.
   </p>
 
   <h2>Qué comprobar desde el móvil</h2>
@@ -145,7 +170,7 @@
       <li>Comprobar que la respuesta llega con <strong>citas</strong> y que se puede abrir la fuente.</li>
       <li>Navegar la evidencia mientras la respuesta se escribe, y comprobar que no se pierde el hilo.</li>
       <li>Cerrar y reabrir: la conversación debe seguir ahí.</li>
-      <li>Abrir el <strong>Hub completo</strong> desde el botón de arriba y repetir una pregunta ahí.</li>
+      <li>Probar el <strong>Hub incrustado</strong> en la sección de esta misma página, y comprobar que la página sigue desplazándose.</li>
       <li>Comprobar que esta página funciona con normalidad aunque el asistente falle.</li>
     </ol>
   </div>
@@ -166,10 +191,19 @@
 
 </div>
 
-<!-- El snippet bajo prueba. Una etiqueta, al final del documento. -->
+<!-- Los dos snippets bajo prueba, tal cual los instalaría un cliente. El
+     primero es el widget flotante; el segundo pone el Hub dentro de
+     #knowledge, más arriba en esta misma página. -->
 <script async
   src="https://dantes-macbook-pro.tail09f5c9.ts.net/v1/loader.js"
   data-kc-tenant="afi"></script>
+
+<script async
+  src="https://dantes-macbook-pro.tail09f5c9.ts.net/v1/loader.js"
+  data-kc-tenant="afi"
+  data-kc-mode="inline"
+  data-kc-target="#knowledge"
+  data-kc-height="78vh"></script>
 
 </body>
 </html>
