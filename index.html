@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elkanodata · prueba de incrustación</title>
+<!--
+  PÁGINA DE PRUEBAS DE ELKANODATA. No pertenece a AFI, no imita su sitio y no
+  dice ser suyo. Existe para una sola cosa: comprobar que el snippet funciona
+  desde una web pública de verdad, en un dominio distinto del que sirve el
+  servicio, antes de contratar alojamiento.
+
+  Lo que se sirve desde el portátil es el CANDIDATO, no la preview aceptada.
+  Las previews estables siguen en su sitio y en su red, sin exposición pública.
+-->
+<style>
+  :root {
+    --ink: #14161a;
+    --muted: #5b6472;
+    --line: #dfe3e8;
+    --bg: #fbfbfc;
+    --card: #ffffff;
+    --accent: #1f5f4f;
+    --warn-bg: #fff8e6;
+    --warn-line: #e8d08a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e8eaee; --muted: #9aa4b2; --line: #2a2f38; --bg: #14161a;
+      --card: #1b1e24; --accent: #6fd0b4; --warn-bg: #2a2416; --warn-line: #5c4d22;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 2rem 1.25rem 6rem; }
+  header { border-bottom: 1px solid var(--line); padding-bottom: 1.25rem; margin-bottom: 1.5rem; }
+  .eyebrow {
+    font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 .4rem;
+  }
+  h1 { font-size: 1.6rem; line-height: 1.25; margin: 0; text-wrap: balance; }
+  h2 { font-size: 1.05rem; margin: 2rem 0 .6rem; }
+  p { margin: 0 0 1rem; }
+  .muted { color: var(--muted); }
+  .notice {
+    background: var(--warn-bg); border: 1px solid var(--warn-line);
+    border-radius: .5rem; padding: .9rem 1rem; margin: 0 0 1.5rem; font-size: .93rem;
+  }
+  .notice strong { display: block; margin-bottom: .25rem; }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: .5rem; padding: 1rem 1.15rem; margin: 0 0 1rem;
+  }
+  ol, ul { margin: 0 0 1rem; padding-left: 1.3rem; }
+  li { margin-bottom: .45rem; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em;
+    background: color-mix(in srgb, var(--line) 45%, transparent);
+    padding: .12em .35em; border-radius: .25em;
+  }
+  pre {
+    background: var(--card); border: 1px solid var(--line); border-radius: .5rem;
+    padding: .9rem 1rem; overflow-x: auto; font-size: .85rem; margin: 0 0 1rem;
+  }
+  pre code { background: none; padding: 0; }
+  footer {
+    margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line);
+    font-size: .85rem; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Elkanodata · entorno de pruebas</p>
+    <h1>Prueba de incrustación del asistente de conocimiento</h1>
+  </header>
+
+  <div class="notice">
+    <strong>Demostración temporal.</strong>
+    Esta página es de Elkanodata y sirve para verificar el snippet desde una web
+    pública real. El asistente se sirve desde un portátil y sólo responde
+    mientras ese equipo está encendido. No es un despliegue, no tiene acuerdo de
+    servicio y desaparece al terminar la prueba.
+  </div>
+
+  <p>
+    El recuadro que aparece abajo a la derecha es el mismo componente que se
+    instalaría en una web de cliente: una sola etiqueta <code>&lt;script&gt;</code>,
+    sin framework y sin tocar el resto de la página.
+  </p>
+
+  <h2>El snippet, tal cual</h2>
+  <pre><code>&lt;script async
+  src="https://dantes-macbook-pro.tail09f5c9.ts.net/v1/loader.js"
+  data-kc-tenant="afi"&gt;&lt;/script&gt;</code></pre>
+
+  <p class="muted">
+    En la instalación definitiva sólo cambia el dominio del <code>src</code>.
+    El atributo <code>data-kc-tenant</code> es una clave de enrutado visible en
+    el HTML: <strong>no es una credencial</strong> y conocerla no autoriza nada.
+  </p>
+
+  <h2>Qué comprobar desde el móvil</h2>
+  <div class="card">
+    <ol>
+      <li>Abrir esta página <strong>sin Tailscale</strong>, con datos móviles.</li>
+      <li>Abrir el asistente y hacer una pregunta real sobre el contenido publicado por AFI.</li>
+      <li>Comprobar que la respuesta llega con <strong>citas</strong> y que se puede abrir la fuente.</li>
+      <li>Navegar la evidencia mientras la respuesta se escribe, y comprobar que no se pierde el hilo.</li>
+      <li>Cerrar y reabrir: la conversación debe seguir ahí.</li>
+      <li>Comprobar que esta página funciona con normalidad aunque el asistente falle.</li>
+    </ol>
+  </div>
+
+  <h2>Qué no hay aquí</h2>
+  <ul>
+    <li>Ninguna consola de administración: no está configurada en esta ejecución.</li>
+    <li>Ninguna ruta de operaciones: no está montada.</li>
+    <li>Ninguna conversación previa: la base de la demo se vació antes de publicar.</li>
+    <li>Ningún dato de las previews estables, que siguen aisladas y sin exposición pública.</li>
+  </ul>
+
+  <footer>
+    Elkanodata · página de pruebas técnica. El contenido que el asistente cita es
+    material publicado abiertamente por Alliance for Financial Inclusion; esta
+    página no está afiliada a AFI ni la representa.
+  </footer>
+
+</div>
+
+<!-- El snippet bajo prueba. Una etiqueta, al final del documento. -->
+<script async
+  src="https://dantes-macbook-pro.tail09f5c9.ts.net/v1/loader.js"
+  data-kc-tenant="afi"></script>
+
+</body>
+</html>
